@@ -1,11 +1,13 @@
 {
   "name": "@enomshop/documents",
-  "version": "1.1.0",
+  "version": "1.10.0",
   "description": "Invoice and document generation plugin for MedusaJS v2",
   "author": "Enomshop",
   "license": "MIT",
   "files": [
-    ".medusa/server"
+    ".medusa/server",
+    "!.medusa/server/**/*.ts",
+    "!.medusa/server/**/*.tsbuildinfo"
   ],
   "exports": {
     "./package.json": "./package.json",
@@ -28,9 +30,9 @@
     "medusa-v2"
   ],
   "scripts": {
-    "build": "medusa plugin:build",
+    "build": "medusa plugin:build && find .medusa/server -name '*.ts' -delete",
     "dev": "medusa plugin:develop",
-    "prepublishOnly": "medusa plugin:build"
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "@medusajs/admin-sdk": "2.12.4",
